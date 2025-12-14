@@ -14,7 +14,7 @@
 		B301222F2EEE96D600121D1D /* Exceptions for "CarCatalog" folder in "CarCatalog" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				Info.plist,
+				App/Info.plist,
 			);
 			target = B30122192EEE96D400121D1D /* CarCatalog */;
 		};
