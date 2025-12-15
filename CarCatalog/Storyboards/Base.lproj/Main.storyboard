@@ -42,7 +42,7 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Raiting: X / 10.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWL-G9-8Mh">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating: X / 10.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWL-G9-8Mh">
                                 <rect key="frame" x="294" y="429.66666666666669" width="130" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="fWL-G9-8Mh" secondAttribute="height" multiplier="36:7" constant="17" id="m0l-y2-Gis"/>
@@ -137,6 +137,16 @@
                             <constraint firstItem="bIy-mX-8XN" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xzb-2G-7Sf"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="carImageView" destination="klz-Yx-tH9" id="Nml-HH-Vb8"/>
+                        <outlet property="lastTimeStartedLabel" destination="Yw4-eZ-bwI" id="ZP2-eh-yoP"/>
+                        <outlet property="markLabel" destination="yTe-fX-SEj" id="AcK-Q5-oRc"/>
+                        <outlet property="modelLabel" destination="bIy-mX-8XN" id="9GY-DS-nKI"/>
+                        <outlet property="myChoiceImageView" destination="Da8-Nx-fJS" id="1rI-An-i6g"/>
+                        <outlet property="numberOfTripsLabel" destination="KJS-MK-75H" id="3IY-9Z-FzV"/>
+                        <outlet property="ratingLabel" destination="fWL-G9-8Mh" id="bwG-Bd-4cH"/>
+                        <outlet property="segmentedControl" destination="xSo-Tl-dqD" id="KqG-r1-HYg"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

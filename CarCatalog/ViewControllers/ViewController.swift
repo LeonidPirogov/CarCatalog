@@ -9,17 +9,53 @@ import UIKit
 import CoreData
 
 class ViewController: UIViewController {
-
+    
     var context: NSManagedObjectContext!
     
+    lazy var dateFormatter: DateFormatter = {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .none
+        return formatter
+    }()
     
+    @IBOutlet var markLabel: UILabel!
+    @IBOutlet var modelLabel: UILabel!
+    @IBOutlet var carImageView: UIImageView!
+    @IBOutlet var lastTimeStartedLabel: UILabel!
+    @IBOutlet var numberOfTripsLabel: UILabel!
+    @IBOutlet var ratingLabel: UILabel!
+    @IBOutlet var segmentedControl: UISegmentedControl!
+    @IBOutlet var myChoiceImageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        getDataFromFile()
+        
+        let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
+        guard let mark = segmentedControl.titleForSegment(at: 0) else { return assertionFailure("Mark entity not found") }
+        fetchRequest.predicate = NSPredicate(format: "mark == %@", mark)
+        
+        do {
+            let results = try context.fetch(fetchRequest)
+            guard let car = results.first else { return assertionFailure("Car entity not found") }
+            insertDataFrom(selectedCar: car)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
     }
     
     private func insertDataFrom(selectedCar car: Car) {
+        carImageView.image = UIImage(data: car.imageData ?? Data())
+        markLabel.text = car.mark
+        modelLabel.text = car.model
+        myChoiceImageView.isHidden = !(car.myChoice)
+        ratingLabel.text = "Rating: \(car.rating) / 10"
+        numberOfTripsLabel.text = "Number of trips: \(car.timesDriven)"
         
+        lastTimeStartedLabel.text = "Last time started: \(dateFormatter.string(from: car.lastStarted!))"
+        segmentedControl.tintColor = car.tintColor as? UIColor
     }
     
     private func getDataFromFile() {
@@ -39,7 +75,7 @@ class ViewController: UIViewController {
         guard records == 0 else { return }
         
         guard let pathToFile = Bundle.main.path(forResource: "data", ofType: "plist"),
-            let dataArray = NSArray(contentsOfFile: pathToFile) else { return }
+              let dataArray = NSArray(contentsOfFile: pathToFile) else { return }
         
         for dictionary in dataArray {
             guard let entity = NSEntityDescription.entity(forEntityName: "Car", in: context) else { assertionFailure("Car entity not found")
@@ -49,7 +85,7 @@ class ViewController: UIViewController {
                 assertionFailure("Failed to create Car object")
                 continue
             }
- 
+            
             guard let carDictionary = dictionary as? [String: Any] else {
                 assertionFailure("Invalid car dictionary format")
                 continue
