@@ -26,6 +26,9 @@
                                     <segment title="Nissan"/>
                                     <segment title="BMW"/>
                                 </segments>
+                                <connections>
+                                    <action selector="segmentedCtrlPressed:" destination="BYZ-38-t0r" eventType="valueChanged" id="2ou-Ph-yBU"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mark" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTe-fX-SEj">
                                 <rect key="frame" x="99" y="144" width="242" height="35"/>
@@ -82,6 +85,9 @@
                                 <state key="normal" title="Start Engine" backgroundImage="button">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="startEnginePressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="rjI-7j-vb6"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOV-dz-HpO">
                                 <rect key="frame" x="312" y="831.33333333333337" width="112" height="32.666666666666629"/>
@@ -93,6 +99,9 @@
                                 <state key="normal" title="Rate" backgroundImage="button">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="rateItPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6p4-3Q-xlu"/>
+                                </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myChoice" translatesAutoresizingMaskIntoConstraints="NO" id="Da8-Nx-fJS">
                                 <rect key="frame" x="142.33333333333331" y="553.66666666666663" width="155.33333333333331" height="155.33333333333337"/>
