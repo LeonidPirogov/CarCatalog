@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="24506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
-    <device id="retina6_9" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="24504"/>
@@ -14,11 +14,11 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CarCatalog" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="440" height="956"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="xSo-Tl-dqD">
-                                <rect key="frame" x="0.0" y="506.66666666666674" width="440" height="32"/>
+                                <rect key="frame" x="0.0" y="342" width="320" height="32"/>
                                 <segments>
                                     <segment title="Lamborgini"/>
                                     <segment title="Ferrari"/>
@@ -31,7 +31,7 @@
                                 </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Mark" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yTe-fX-SEj">
-                                <rect key="frame" x="99" y="144" width="242" height="35"/>
+                                <rect key="frame" x="88" y="40" width="144" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="yTe-fX-SEj" secondAttribute="height" multiplier="76:11" id="rZC-n1-QfB"/>
                                 </constraints>
@@ -40,13 +40,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Last time started: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yw4-eZ-bwI">
-                                <rect key="frame" x="16" y="429.66666666666669" width="139" height="22"/>
+                                <rect key="frame" x="16" y="265" width="139" height="22"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating: X / 10.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fWL-G9-8Mh">
-                                <rect key="frame" x="294" y="429.66666666666669" width="130" height="22"/>
+                                <rect key="frame" x="174" y="265" width="130" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="fWL-G9-8Mh" secondAttribute="height" multiplier="36:7" constant="17" id="m0l-y2-Gis"/>
                                 </constraints>
@@ -55,13 +55,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of trips:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KJS-MK-75H">
-                                <rect key="frame" x="16" y="459.66666666666669" width="408" height="22"/>
+                                <rect key="frame" x="16" y="295" width="288" height="22"/>
                                 <fontDescription key="fontDescription" name="AppleSDGothicNeo-Regular" family="Apple SD Gothic Neo" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Model" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bIy-mX-8XN">
-                                <rect key="frame" x="91" y="188" width="258" height="46.333333333333343"/>
+                                <rect key="frame" x="83.5" y="70" width="153" height="27.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="bIy-mX-8XN" secondAttribute="height" multiplier="162:29" id="zwO-VJ-aZQ"/>
                                 </constraints>
@@ -70,13 +70,13 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="lamborginiMurcelago" translatesAutoresizingMaskIntoConstraints="NO" id="klz-Yx-tH9">
-                                <rect key="frame" x="16" y="267.33333333333331" width="408" height="144.33333333333331"/>
+                                <rect key="frame" x="16" y="130.5" width="288" height="116.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="klz-Yx-tH9" secondAttribute="height" multiplier="35:8" constant="-223.12" id="8Rf-gF-jTq"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="GH4-qS-9zD">
-                                <rect key="frame" x="16" y="831.33333333333337" width="112" height="32.666666666666629"/>
+                                <rect key="frame" x="16" y="511" width="112" height="33"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="GH4-qS-9zD" secondAttribute="height" multiplier="16:15" constant="77" id="NZD-3X-W6L"/>
                                 </constraints>
@@ -90,7 +90,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xOV-dz-HpO">
-                                <rect key="frame" x="312" y="831.33333333333337" width="112" height="32.666666666666629"/>
+                                <rect key="frame" x="192" y="511.5" width="112" height="32.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="xOV-dz-HpO" secondAttribute="height" multiplier="23:15" constant="62" id="Qkb-Bk-4n6"/>
                                 </constraints>
@@ -104,7 +104,7 @@
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="myChoice" translatesAutoresizingMaskIntoConstraints="NO" id="Da8-Nx-fJS">
-                                <rect key="frame" x="142.33333333333331" y="553.66666666666663" width="155.33333333333331" height="155.33333333333337"/>
+                                <rect key="frame" x="114" y="389" width="92" height="92.5"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="Da8-Nx-fJS" secondAttribute="height" multiplier="1:1" id="RGB-kd-Nmm"/>
                                 </constraints>
