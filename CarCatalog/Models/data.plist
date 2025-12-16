@@ -7,7 +7,7 @@
 		<real>5</real>
 		<key>myChoice</key>
 		<false/>
-		<key>tintColor</key>
+		<key>tintColorData</key>
 		<dict>
 			<key>green</key>
 			<integer>224</integer>
@@ -32,7 +32,7 @@
 		<real>5</real>
 		<key>myChoice</key>
 		<true/>
-		<key>tintColor</key>
+		<key>tintColorData</key>
 		<dict>
 			<key>green</key>
 			<integer>31</integer>
@@ -57,7 +57,7 @@
 		<real>5</real>
 		<key>myChoice</key>
 		<false/>
-		<key>tintColor</key>
+		<key>tintColorData</key>
 		<dict>
 			<key>green</key>
 			<integer>0</integer>
@@ -82,7 +82,7 @@
 		<real>5</real>
 		<key>myChoice</key>
 		<false/>
-		<key>tintColor</key>
+		<key>tintColorData</key>
 		<dict>
 			<key>green</key>
 			<integer>19</integer>
@@ -107,7 +107,7 @@
 		<real>5</real>
 		<key>myChoice</key>
 		<false/>
-		<key>tintColor</key>
+		<key>tintColorData</key>
 		<dict>
 			<key>green</key>
 			<integer>0</integer>
