@@ -26,29 +26,29 @@ class ViewController: UIViewController {
     @IBOutlet var lastTimeStartedLabel: UILabel!
     @IBOutlet var numberOfTripsLabel: UILabel!
     @IBOutlet var ratingLabel: UILabel!
-    @IBOutlet var segmentedControl: UISegmentedControl!
     @IBOutlet var myChoiceImageView: UIImageView!
+    
+    @IBOutlet var segmentedControl: UISegmentedControl! {
+        didSet {
+            segmentedControl.selectedSegmentTintColor = .white
+            
+            let whiteTitleAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+            let blackTitleAttributes = [NSAttributedString.Key.foregroundColor: UIColor.black]
+            
+            segmentedControl.setTitleTextAttributes(whiteTitleAttributes, for: .normal)
+            segmentedControl.setTitleTextAttributes(blackTitleAttributes, for: .selected)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         getDataFromFile()
-        
-        let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
-        guard let mark = segmentedControl.titleForSegment(at: 0) else { return assertionFailure("Mark entity not found") }
-        fetchRequest.predicate = NSPredicate(format: "mark == %@", mark)
-        
-        do {
-            let results = try context.fetch(fetchRequest)
-            car = results.first
-            insertDataFrom(selectedCar: car)
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        }
+        updateSegmentedControl()
     }
     
     @IBAction func segmentedCtrlPressed(_ sender: UISegmentedControl) {
-        
+        updateSegmentedControl()
     }
     
     @IBAction func startEnginePressed(_ sender: UIButton) {
@@ -92,6 +92,8 @@ class ViewController: UIViewController {
         numberOfTripsLabel.text = "Number of trips: \(car.timesDriven)"
         
         lastTimeStartedLabel.text = "Last time started: \(dateFormatter.string(from: car.lastStarted!))"
+        
+        segmentedControl.backgroundColor = car.tintUIColor
     }
     
     private func getDataFromFile() {
@@ -103,7 +105,6 @@ class ViewController: UIViewController {
         
         do {
             records = try context.count(for: fetchRequest)
-            print("Is Data there already?")
         } catch let error as NSError {
             print(error.localizedDescription)
         }
@@ -126,6 +127,7 @@ class ViewController: UIViewController {
                 assertionFailure("Invalid car dictionary format")
                 continue
             }
+            
             car.mark = carDictionary["mark"] as? String
             car.model = carDictionary["model"] as? String
             car.rating = carDictionary["rating"] as? Double ?? 0.0
@@ -138,27 +140,22 @@ class ViewController: UIViewController {
             let imageData = image?.pngData()
             car.imageData = imageData
             
-            if let colorDictionary = carDictionary["color"] as? [String: Float] {
-                car.tintColor = getColor(colorDictionary: colorDictionary)
+            if let tintDictionary = carDictionary["tintColorData"] as? [String: Any] {
+                car.tintUIColor = getColorAny(colorDictionary: tintDictionary)
+            } else {
+                print("No tintColorData for:", car.mark ?? "nil")
             }
         }
-    }
-    
-    private func getColor(colorDictionary: [String : Float]) -> UIColor {
-        guard let red = colorDictionary["red"],
-              let green = colorDictionary["green"],
-              let blue = colorDictionary["blue"] else { return UIColor() }
-        return UIColor(
-            red: CGFloat(red / 255),
-            green: CGFloat(green / 255),
-            blue: CGFloat(blue / 255),
-            alpha: 1.0
-        )
+        
+        do {
+            try context.save()
+        } catch {
+            print("Failed to save imported cars: \(error)")
+        }
     }
     
     private func update(rating: Double) {
         car.rating = rating
-        
         do {
             try context.save()
             insertDataFrom(selectedCar: car)
@@ -171,5 +168,57 @@ class ViewController: UIViewController {
             print(error.localizedDescription)
         }
     }
+    
+    private func updateSegmentedControl() {
+        let fetchRequest: NSFetchRequest<Car> = Car.fetchRequest()
+        guard let mark = segmentedControl.titleForSegment(at: segmentedControl.selectedSegmentIndex) else { return assertionFailure("Mark entity not found") }
+        fetchRequest.predicate = NSPredicate(format: "mark == %@", mark)
+        
+        do {
+            let results = try context.fetch(fetchRequest)
+            car = results.first
+            insertDataFrom(selectedCar: car)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+    }
+    
+    private func getColorAny(colorDictionary: [String: Any]) -> UIColor {
+        let red = (colorDictionary["red"] as? NSNumber)?.doubleValue ?? 255
+        let green = (colorDictionary["green"] as? NSNumber)?.doubleValue ?? 255
+        let blue = (colorDictionary["blue"] as? NSNumber)?.doubleValue ?? 0
+
+        return UIColor(
+            red: CGFloat(red / 255.0),
+            green: CGFloat(green / 255.0),
+            blue: CGFloat(blue / 255.0),
+            alpha: 1.0
+        )
+    }
 }
 
+extension Car {
+    var tintUIColor: UIColor {
+        get {
+            guard let data = tintColorData else { return .systemYellow }
+
+            do {
+                if let color = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: data) {
+                return color
+                }
+            } catch {
+                print("Unarchive tintColor failed:", error)
+            }
+            return .systemYellow
+        }
+        set {
+            do {
+                let data = try NSKeyedArchiver.archivedData(withRootObject: newValue,
+                                                            requiringSecureCoding: false)
+                tintColorData = data
+            } catch {
+                tintColorData = nil
+            }
+        }
+    }
+}
